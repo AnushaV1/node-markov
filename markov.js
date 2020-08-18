@@ -2,7 +2,6 @@
 class MarkovMachine {
 
   /** build markov machine; read in text.*/
-
   constructor(text) {
     let words = text.split(/[ \r\n]+/);
     this.words = words.filter(c => c !== "");
@@ -26,6 +25,11 @@ class MarkovMachine {
     }
     this.chains = myChains;
   }
+/** return random text from chains */
+static getRandomChoice(choice) {
+  return choice[Math.floor(Math.random() * choice.length)]
+  }
+
 
   makeText(numWords = 100) {
     let keyArr = Array.from(this.chains.keys());
@@ -39,12 +43,7 @@ class MarkovMachine {
     return output.join(" ");
   }
 
-/** return random text from chains */
-  static getRandomChoice(choice) {
-  return choice[Math.floor(Math.random * choice.length)]
-  }
 
 }
 
-
-module.exports = { MarkovMachine }
+module.exports = { MarkovMachine };
